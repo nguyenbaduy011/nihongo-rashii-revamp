@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +15,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <nav className="flex px-20 py-3 justify-between items-center bg-primary-foreground sticky inset-0">
+          <Link
+            className="font-bold text-4xl hover:-rotate-12 hover:scale-125 hover:-translate-y-1  hover:transition-all"
+            href="/"
+          >
+            N.
+          </Link>
+          <div className="space-x-10 font-medium text-xl/6 tracking-tight ">
+            <Link className="hover:underline hover:underline-offset-8" href="#">
+              Ngữ pháp
+            </Link>
+            <Link href="#">Hán tự</Link>
+            <Link href="#">Diễn đàn</Link>
+            <Button size="lg" className="tracking-tight text-lg/5" asChild>
+              <Link href="/login">Đăng nhập</Link>
+            </Button>
+          </div>
+        </nav>
+        {children}
+        <footer className=""></footer>
+      </body>
     </html>
   );
 }
