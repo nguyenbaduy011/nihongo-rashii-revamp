@@ -3,8 +3,8 @@ export default function Home() {
     <main>
       <section className="bg-primary-foreground pt-40 pb-28 px-20">
         <h1 className="font-medium text-8xl tracking-tighter w-2/3 mx-auto">
-          Ben Meyer
-          <br /> Freelance product designer
+          ようこそ
+          <br /> 日本語らしい！
         </h1>
       </section>
       <section className=" py-40 px-20">

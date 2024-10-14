@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
+import { HandleSign} from "@/components/sign";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav className="flex px-20 py-3 justify-between items-center bg-primary-foreground sticky inset-0">
+        <nav className="flex px-20 py-2 justify-between items-center bg-primary-foreground sticky inset-0">
           <Link
             className="font-bold text-4xl hover:-rotate-12 hover:scale-125 hover:-translate-y-1  hover:transition-all"
             href="/"
@@ -27,15 +29,41 @@ export default function RootLayout({
             <Link className="hover:underline hover:underline-offset-8" href="#">
               Ngữ pháp
             </Link>
-            <Link href="#">Hán tự</Link>
-            <Link href="#">Diễn đàn</Link>
-            <Button size="lg" className="tracking-tight text-lg/5" asChild>
-              <Link href="/login">Đăng nhập</Link>
-            </Button>
+            <Link className="hover:underline hover:underline-offset-8" href="#">
+              Hán tự
+            </Link>
+            <Link className="hover:underline hover:underline-offset-8" href="#">
+              Diễn đàn
+            </Link>
+            <HandleSign/>
           </div>
         </nav>
         {children}
-        <footer className=""></footer>
+        <footer className="bg-primary-foreground">
+          <div className="mx-auto flex h-[400px] items-center justify-center space-x-[400px]">
+            <div className="max-w-66">
+              <div className="items-center space-y-14 text-xl">
+                <div className="font-medium">日本語らしい</div>
+                <div className="space-y-5 font-medium">
+                  <div>Blogs</div>
+                  <div>Contact</div>
+                  <div>Quick Links</div>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-5">
+              <h1 className="text-xl font-medium">Social media</h1>
+              <div className="flex space-x-3">
+                <Facebook />
+                <Instagram />
+                <Linkedin />
+                <Link href="https://github.com/nguyenbaduy011/nihongo-rashii-revamp">
+                  <Github />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
