@@ -5,8 +5,29 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1728807397455,
-      "tag": "0000_tranquil_caretaker",
+      "when": 1729077038024,
+      "tag": "0000_early_dagger",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1729077266328,
+      "tag": "0001_sharp_bushwacker",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729077307709,
+      "tag": "0002_parched_riptide",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1729079764045,
+      "tag": "0003_furry_blindfold",
       "breakpoints": true
     }
   ]

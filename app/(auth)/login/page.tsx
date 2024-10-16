@@ -6,6 +6,7 @@ import { Label } from "@radix-ui/react-label";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ export default function SignIn() {
     await client.signIn.email({
       email,
       password,
+      callbackURL: "/",
     });
   };
 
@@ -23,10 +25,11 @@ export default function SignIn() {
       provider: "google",
       callbackURL: "/",
     });
+    
   };
 
   return (
-    <section className="py-40 px-20 flex gap-16 ">
+    <section className="py-40 px-20 flex gap-16 bg-primary-foreground">
       <div className=" w-2/3 flex justify-center">
         <h2 className="font-medium tracking-tight text-6xl/tight mt-7">
           Đăng nhập

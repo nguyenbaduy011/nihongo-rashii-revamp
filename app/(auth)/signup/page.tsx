@@ -20,7 +20,7 @@ export default function SignUp() {
   };
 
   return (
-    <section className="py-40 px-20 flex gap-16">
+    <section className="py-40 px-20 flex gap-16 bg-primary-foreground">
       <div className=" w-2/3 flex justify-center">
         <h2 className="font-medium tracking-tight text-6xl/tight mt-7">
           Đăng ký
