@@ -1,22 +1,19 @@
-import {
-  pgTable,
-  text,
-  timestamp,
-  boolean,
-  serial,
-  json,
-} from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, serial, varchar } from "drizzle-orm/pg-core";
 import { user } from "@/drizzle/schema/auth";
 
 export const blogs = pgTable("blogs", {
   id: serial("id").primaryKey(),
   userID: text("userID").references(() => user.id, { onDelete: "cascade" }),
-  title: text("title"),
+  title: text("title").notNull(),
   image: text("image"),
-  description: text("description"),
-  content: json("content"),
-  date: timestamp("date").defaultNow(),
+  description: text("description").notNull(),
+  content: text("content").notNull(),
+  slug: varchar("slug", { length: 250 }).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export type InsertBlogType = typeof blogs.$inferInsert;
+export type SelectBlogType = typeof blogs.$inferSelect;
 
 // export const levels = pgTable("levels", {
 //   id: text("id").notNull().primaryKey(),

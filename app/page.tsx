@@ -1,14 +1,15 @@
+import AddBlog from "@/components/blogRichText/addBlog";
 import { db } from "@/drizzle/db";
 import Link from "next/link";
 
 export default async function Home() {
   const latestBlogs = await db.query.blogs.findMany({
     limit: 5,
-    orderBy: (blogs, { desc }) => [desc(blogs.date)],
+    orderBy: (blogs, { desc }) => [desc(blogs.createdAt)],
   });
 
   const blogDate = latestBlogs.map((blog) => {
-    return blog.date ? blog.date.toLocaleDateString() : "N/A";
+    return blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "N/A";
   });
 
   return (
@@ -29,7 +30,7 @@ export default async function Home() {
           năng ngôn ngữ của bạn!
         </p>
       </section>
-      
+
       <section className="py-40 px-20 space-y-20">
         <div className="border-t-2 border-black">
           <h2 className="font-medium tracking-tight text-6xl/tight mt-7">
@@ -90,67 +91,28 @@ export default async function Home() {
             Blog
           </h2>
         </div>
+
         <div className="space-y-12 w-full">
-          <div className="pb-12 border-b-2">
-            <h3 className="tracking-tighter font-medium text-3xl/snug">
-              <Link href={`/blog/${latestBlogs[0].id}`}>
-                {latestBlogs[0].title}
-              </Link>
-            </h3>
-            <div className="space-x-2 mt-4">
-              <span>{blogDate[0]}</span>
-              <span>·</span>
-              <span>5 min read</span>
+          {!latestBlogs[0] ? (
+            <div>Chưa có blog</div>
+          ) : (
+            <div>
+              {latestBlogs.slice(0, 5).map((blog, index) => (
+                <div key={blog.id} className="pb-12 border-b-2">
+                  <h3 className="tracking-tighter font-medium text-3xl/snug">
+                    <Link href={`/blogs/${blog.slug}?id=${blog.id}`}>
+                      {blog.title} 
+                    </Link>
+                  </h3>
+                  <div className="space-x-2 mt-4">
+                    <span>{blogDate[index]}</span>
+                    <span>·</span>
+                    <span>5 min read</span>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="pb-12 border-b-2">
-            <h3 className="tracking-tighter font-medium text-3xl/snug">
-              <Link href={`/blog/${latestBlogs[1].id}`}>
-                {latestBlogs[1].title}
-              </Link>
-            </h3>
-            <div className="space-x-2 mt-4">
-              <span>{blogDate[1]}</span>
-              <span>·</span>
-              <span>5 min read</span>
-            </div>
-          </div>
-          <div className="pb-12 border-b-2">
-            <h3 className="tracking-tighter font-medium text-3xl/snug">
-              <Link href={`/blog/${latestBlogs[2].id}`}>
-                {latestBlogs[2].title}
-              </Link>
-            </h3>
-            <div className="space-x-2 mt-4">
-              <span>{blogDate[2]}</span>
-              <span>·</span>
-              <span>5 min read</span>
-            </div>
-          </div>
-          <div className="pb-12 border-b-2">
-            <h3 className="tracking-tighter font-medium text-3xl/snug">
-              <Link href={`/blog/${latestBlogs[3].id}`}>
-                {latestBlogs[3].title}
-              </Link>
-            </h3>
-            <div className="space-x-2 mt-4">
-              <span>{blogDate[3]}</span>
-              <span>·</span>
-              <span>5 min read</span>
-            </div>
-          </div>
-          <div className="pb-12 border-b-2">
-            <h3 className="tracking-tighter font-medium text-3xl/snug">
-              <Link href={`/blog/${latestBlogs[4].id}`}>
-                {latestBlogs[4].title}
-              </Link>
-            </h3>
-            <div className="space-x-2 mt-4">
-              <span>{blogDate[4]}</span>
-              <span>·</span>
-              <span>5 min read</span>
-            </div>
-          </div>
+          )}
         </div>
       </section>
     </main>

@@ -37,7 +37,7 @@ export function CreateBlog() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
-      description: "",
+      description: "",i
     },
   });
 

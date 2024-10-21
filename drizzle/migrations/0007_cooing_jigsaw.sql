@@ -1,0 +1,1 @@
+ALTER TABLE "user" ALTER COLUMN "blogCount" SET DEFAULT 0;
