@@ -117,7 +117,7 @@ export default function ProfileDashboard() {
       <Card>
         <CardHeader>
           <CardTitle>Blog của bạn</CardTitle>
-          <CardDescription>Quản lý vào tạo thêm blog mới</CardDescription>
+          <CardDescription>Quản lý và tạo thêm blog mới</CardDescription>
         </CardHeader>
         <CardContent>
           {blogCount === 0 ? (
