@@ -110,6 +110,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Toaster } from "@/components/ui/toaster";
+import React from "react";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -147,7 +149,38 @@ export default async function RootLayout({
                       Ngữ pháp
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <NavigationMenuLink>Link</NavigationMenuLink>
+                      <ul className="w-[135.56px]">
+                        <ListItem
+                          key="N5"
+                          title="N5"
+                          href="/N5"
+                          className="bg-white text-center hover:bg-primary hover:text-white"
+                        ></ListItem>
+                        <ListItem
+                          key="N5"
+                          title="N4"
+                          href="/N4"
+                          className="bg-white text-center hover:bg-primary-foreground"
+                        ></ListItem>
+                        <ListItem
+                          key="N5"
+                          title="N3"
+                          href="/N3"
+                          className="bg-white text-center hover:bg-primary-foreground"
+                        ></ListItem>
+                        <ListItem
+                          key="N5"
+                          title="N2"
+                          href="/N2"
+                          className="bg-white text-center hover:bg-primary-foreground"
+                        ></ListItem>
+                        <ListItem
+                          key="N5"
+                          title="N1"
+                          href="/N1"
+                          className="bg-white text-center hover:bg-primary-foreground"
+                        ></ListItem>
+                      </ul>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 </NavigationMenuList>
@@ -165,13 +198,16 @@ export default async function RootLayout({
                 Diễn đàn
               </Link>
               {/* Profile */}
-              <Button asChild className="w-full sm:w-auto">
-                <Link href="/blogs/createBlog">
-                  <PlusCircle className="h-4 w-4" />
-                </Link>
-              </Button>
+
               {session ? (
-                <Profile user={session?.user} />
+                <div className="flex items-center space-x-10">
+                  <Button asChild className="w-full sm:w-auto">
+                    <Link href="/blogs/createBlog">
+                      <PlusCircle className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Profile user={session?.user} />
+                </div>
               ) : (
                 <Button asChild>
                   <Link href="/login">Đăng nhập</Link>
@@ -211,3 +247,27 @@ export default async function RootLayout({
     </html>
   );
 }
+
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title,  ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>       
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";

@@ -43,7 +43,7 @@ export function Profile({ user }: { user: any }) {
             });
           }}
         >
-          Logout
+          Đăng xuất
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
