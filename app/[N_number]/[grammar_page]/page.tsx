@@ -58,8 +58,63 @@ const options: HTMLReactParserOptions = {
         );
       }
       if (name === "br") {
+        return <br />; // Chỉ cần một thẻ tự đóng
+      }
+      if (name === "h1") {
         return (
-          <br className="mb-4">{domToReact(children as DOMNode[], options)}</br>
+          <h1 className="text-2xl font-bold mb-4">
+            {domToReact(children as DOMNode[], options)}
+          </h1>
+        );
+      }
+
+      if (name === "h2") {
+        return (
+          <h2 className="text-xl font-bold mb-4">
+            {domToReact(children as DOMNode[], options)}
+          </h2>
+        );
+      }
+
+      if (name === "h3") {
+        return (
+          <h3 className="text-lg font-bold mb-4">
+            {domToReact(children as DOMNode[], options)}
+          </h3>
+        );
+      }
+
+      if (name === "strong") {
+        return <strong>{domToReact(children as DOMNode[], options)}</strong>;
+      }
+
+      if (name === "em") {
+        return <em>{domToReact(children as DOMNode[], options)}</em>;
+      }
+
+      // Thêm các thẻ khác tùy ý
+      if (name === "blockquote") {
+        return (
+          <blockquote className="border-l-4 border-gray-300 pl-4 mb-4 italic">
+            {domToReact(children as DOMNode[], options)}
+          </blockquote>
+        );
+      }
+
+      if (name === "code") {
+        return (
+          <code className="bg-gray-200 p-1 rounded">
+            {domToReact(children as DOMNode[], options)}
+          </code>
+        );
+      }
+
+      if (name === "a") {
+        const { href } = domNode.attribs;
+        return (
+          <a href={href} className="text-blue-500 hover:underline">
+            {domToReact(children as DOMNode[], options)}
+          </a>
         );
       }
     }
