@@ -58,9 +58,7 @@ const options: HTMLReactParserOptions = {
         );
       }
       if (name === "br") {
-        return (
-          <br className="mb-4">{domToReact(children as DOMNode[], options)}</br>
-        );
+        return <br className="mb-4" />;
       }
     }
   },
