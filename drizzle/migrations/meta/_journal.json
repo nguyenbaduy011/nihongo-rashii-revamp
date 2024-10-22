@@ -92,6 +92,13 @@
       "when": 1729362255027,
       "tag": "0012_mixed_silver_sable",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1729585161282,
+      "tag": "0013_sparkling_solo",
+      "breakpoints": true
     }
   ]
 }
