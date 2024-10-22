@@ -5,14 +5,11 @@ import { Label } from "@radix-ui/react-label";
 import { client } from "@/lib/auth-client";
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { toast } from "@/hooks/use-toast";
 
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
 
   const handleSignUp = async () => {
     await client.signUp.email({
@@ -20,11 +17,6 @@ export default function SignUp() {
       email,
       password,
     });
-    toast({
-      title: "Đăng ký thành công",
-      description: "Tài khoản của bạn đã được tạo.",
-    });
-    router.push("/dashboard");
   };
 
   return (
