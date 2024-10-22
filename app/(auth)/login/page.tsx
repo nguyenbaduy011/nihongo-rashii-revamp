@@ -5,8 +5,6 @@ import { client } from "@/lib/auth-client";
 import { Label } from "@radix-ui/react-label";
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
-import { redirect } from "next/navigation";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
