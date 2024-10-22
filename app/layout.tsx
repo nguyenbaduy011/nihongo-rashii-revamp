@@ -160,25 +160,25 @@ export default async function RootLayout({
                           key="N5"
                           title="N4"
                           href="/N4"
-                          className="bg-white text-center hover:bg-primary-foreground"
+                          className="bg-white text-center hover:bg-primary hover:text-white"
                         ></ListItem>
                         <ListItem
                           key="N5"
                           title="N3"
                           href="/N3"
-                          className="bg-white text-center hover:bg-primary-foreground"
+                          className="bg-white text-center hover:bg-primary hover:text-white"
                         ></ListItem>
                         <ListItem
                           key="N5"
                           title="N2"
                           href="/N2"
-                          className="bg-white text-center hover:bg-primary-foreground"
+                          className="bg-white text-center hover:bg-primary hover:text-white"
                         ></ListItem>
                         <ListItem
                           key="N5"
                           title="N1"
                           href="/N1"
-                          className="bg-white text-center hover:bg-primary-foreground"
+                          className="bg-white text-center hover:bg-primary hover:text-white"
                         ></ListItem>
                       </ul>
                     </NavigationMenuContent>
