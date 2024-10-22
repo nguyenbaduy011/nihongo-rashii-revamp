@@ -1,0 +1,1 @@
+ALTER TABLE "blogs" ALTER COLUMN "content" SET DATA TYPE text;
