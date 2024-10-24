@@ -8,6 +8,8 @@ import parse, {
   Element,
   DOMNode,
 } from "html-react-parser";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 export default async function GrammarPage({
   params,
@@ -122,19 +124,28 @@ export default async function GrammarPage({
   };
 
   return (
-    <div className="">
-      <div className="m-10 mx-auto max-w-[1000px] space-y-16">
-        {/* <div className="flex space-x-3">
-        <MoveLeft />
-        <div>Back</div>
-      </div> */}
+    <div>
+      <div className="flex pt-8 pl-8">
+        <Link
+          className="flex gap-1 justify-center group"
+          href={`/${grammar_page.level}`}
+        >
+          <div className="group-hover:-translate-x-1 transition-transform duration-300">
+            <ChevronLeft />
+          </div>
+          <div className="font-medium">Quay lại</div>
+        </Link>
+      </div>
+      <div className="mx-auto max-w-[1000px] space-y-16">
         <div className="border-b-2 pb-3">
           <div className="flex h-10 items-center justify-center bg-[#2B2B2B] text-xl text-white">
             Ngữ pháp {grammar_page.level}
           </div>
-          <div className="flex h-20 items-center justify-center bg-[#Ffaaaa] text-3xl text-[#2B2B2B]">
-            {grammar_page.japaneseRead}
-            <br />({grammar_page.romajiRead})
+          <div className="flex h-20 items-center justify-center bg-[#Ffaaaa] text-3xl text-[#2B2B2B] text-center">
+            <div className="">
+              {grammar_page.japaneseRead}
+              <br />({grammar_page.romajiRead})
+            </div>
           </div>
         </div>
         <div className="space-y-16">
