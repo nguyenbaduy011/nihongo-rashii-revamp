@@ -19,9 +19,14 @@ interface blogProps {
 }
 export default async function BlogPage({searchParams}: blogProps) {
 
-  const blogPageId = Number(searchParams.id) ;
+  const blogPageId = parseInt(searchParams.id, 10);
 
-  console.log("Blog ID:", blogPageId); // Log ID
+  if(isNaN(blogPageId)){
+    console.error("Invalid Blog ID:", searchParams.id)
+    redirect("/")
+    return;
+  }
+
   let blog_page;
   try {
     blog_page = await db.query.blogs.findFirst({
