@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   ColumnDef,
-  ColumnFiltersState,
   flexRender,
   getFilteredRowModel,
   getCoreRowModel,
@@ -19,6 +18,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { CommandInput } from "@/components/ui/command";
+import { cn } from "@/lib/utils";
+import { Search } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -29,33 +31,29 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [],
-  );
+  const [globalFilter, setGlobalFilter] = useState<any>([]);
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
-      columnFilters,
+      globalFilter,
     },
+    onGlobalFilterChange: setGlobalFilter,
   });
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-md border">
-      <div className="py-4">
-        <Input
-          placeholder="Tìm ngữ pháp..."
-          value={
-            (table.getColumn("romajiRead")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("romajiRead")?.setFilterValue(event.target.value)
-          }
-          className="flex-grow"
-        />
+    <div className="flex flex-col items-start rounded-md border">
+      <div className="py-4 ml-2">
+        <div className="flex items-center px-3" cmdk-input-wrapper="">
+          <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+          <Input
+            className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            onChange={(e) => table.setGlobalFilter(String(e.target.value))}
+            placeholder="Tìm ngữ pháp..."
+          />
+        </div>
       </div>
       <Table>
         <TableHeader>
@@ -68,7 +66,7 @@ export function DataTable<TData, TValue>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
                   </TableHead>
                 );

@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { client } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
 
 export function Profile({ user }: { user: any }) {
   const router = useRouter();
@@ -34,13 +35,9 @@ export function Profile({ user }: { user: any }) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={async () => {
-            await client.signOut({
-              fetchOptions: {
-                onSuccess() {
-                  router.push("/login");
-                },
-              },
-            });
+            await client.signOut();
+            router.push("/login");
+            router.refresh();
           }}
         >
           Đăng xuất
