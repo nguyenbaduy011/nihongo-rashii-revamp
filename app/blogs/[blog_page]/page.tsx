@@ -115,7 +115,7 @@ export default async function BlogPage({searchParams}: blogProps) {
               </div>
             </div>
             <img
-              src="https://pbs.twimg.com/profile_images/1571353371310804995/5EuNttEl_400x400.png"
+              src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary-800x450.webp"
               className="w-full h-96"
             />
           </div>

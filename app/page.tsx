@@ -9,7 +9,9 @@ export default async function Home() {
   });
 
   const blogDate = latestBlogs.map((blog) => {
-    return blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "N/A";
+    return blog.createdAt
+      ? new Date(blog.createdAt).toLocaleDateString()
+      : "N/A";
   });
 
   return (
@@ -37,51 +39,88 @@ export default async function Home() {
             Ngữ pháp
           </h2>
         </div>
-        <div>
-          <img className="w-full aspect-video rounded-xl border" />
-          <div className="mt-6">
-            <div className="font-medium text-2xl/7 tracking-tight">
-              Grid title
+        <div className="px-20">
+          <Link href="/N5">
+            <img
+              className="w-full rounded-xl border"
+              src="/N5.svg"
+              alt="N5 image"
+            />
+            <div className="mt-6">
+              <div className="font-medium text-2xl/7 tracking-tight">N5</div>
+              <div className="text-2xl/ tracking-tight">
+                Ngữ pháp cơ bản cho người mới bắt đầu học tiếng Nhật, tập trung
+                vào các cấu trúc câu đơn giản và giao tiếp hàng ngày.
+              </div>
             </div>
-            <div className="text-2xl/ tracking-tight">Grid description</div>
-          </div>
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <img className="w-full aspect-video rounded-xl border" />
-            <div className="mt-6">
-              <div className="font-medium text-2xl/7 tracking-tight">
-                Grid title
+            <Link href="/N4">
+              <img
+                className="w-full rounded-xl border"
+                src="/N4.svg"
+                alt="N4 image"
+              />
+              <div className="mt-6">
+                <div className="font-medium text-2xl/7 tracking-tight">N4</div>
+                <div className="text-2xl/ tracking-tight">
+                  Ngữ pháp trung cấp thấp, mở rộng vốn từ và mẫu câu để hiểu
+                  được các chủ đề quen thuộc trong cuộc sống hàng ngày.
+                </div>
               </div>
-              <div className="text-2xl/ tracking-tight">Grid description</div>
-            </div>
+            </Link>
           </div>
           <div>
-            <img className="w-full aspect-video rounded-xl border" />
-            <div className="mt-6">
-              <div className="font-medium text-2xl/7 tracking-tight">
-                Grid title
+            <Link href="/N3">
+              <img
+                className="w-full rounded-xl border"
+                src="/N3.svg"
+                alt="N3 image"
+              />
+              <div className="mt-6">
+                <div className="font-medium text-2xl/7 tracking-tight">N3</div>
+                <div className="text-2xl/ tracking-tight">
+                  Ngữ pháp trung cấp, giúp hiểu và sử dụng ngôn ngữ trong các
+                  tình huống hàng ngày và trong công việc đơn giản.
+                </div>
               </div>
-              <div className="text-2xl/ tracking-tight">Grid description</div>
-            </div>
+            </Link>
           </div>
           <div>
-            <img className="w-full aspect-video rounded-xl border" />
-            <div className="mt-6">
-              <div className="font-medium text-2xl/7 tracking-tight">
-                Grid title
+            <Link href="/N2">
+              <img
+                className="w-full rounded-xl border"
+                src="/N2.svg"
+                alt="N2 image"
+              />
+              <div className="mt-6">
+                <div className="font-medium text-2xl/7 tracking-tight">N2</div>
+                <div className="text-2xl/ tracking-tight">
+                  Ngữ pháp trung cấp cao, yêu cầu sự thành thạo trong các ngữ
+                  cảnh học thuật và công việc, với sự hiểu biết sâu hơn về các
+                  cấu trúc phức tạp.
+                </div>
               </div>
-              <div className="text-2xl/ tracking-tight">Grid description</div>
-            </div>
+            </Link>
           </div>
           <div>
-            <img className="w-full aspect-video rounded-xl border" />
-            <div className="mt-6">
-              <div className="font-medium text-2xl/7 tracking-tight">
-                Grid title
+            <Link href="/N1">
+              <img
+                className="w-full rounded-xl border"
+                src="/N1.svg"
+                alt="N1 image"
+              />
+              <div className="mt-6">
+                <div className="font-medium text-2xl/7 tracking-tight">N1</div>
+                <div className="text-2xl/ tracking-tight">
+                  Ngữ pháp chuyên sâu dành cho những ai muốn thông thạo ngôn ngữ
+                  Nhật Bản ở mức độ cao nhất, phù hợp cho các tình huống học
+                  thuật và chuyên nghiệp.
+                </div>
               </div>
-              <div className="text-2xl/ tracking-tight">Grid description</div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -101,7 +140,7 @@ export default async function Home() {
                 <div key={blog.id} className="pb-12 border-b-2">
                   <h3 className="tracking-tighter font-medium text-3xl/snug">
                     <Link href={`/blogs/${blog.slug}?id=${blog.id}`}>
-                      {blog.title} 
+                      {blog.title}
                     </Link>
                   </h3>
                   <div className="space-x-2 mt-4">
