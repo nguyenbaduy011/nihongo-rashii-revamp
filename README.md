@@ -17,5 +17,5 @@ Nihongo Rashii is a web application designed for learning the Japanese language.
 - **PostgreSQL**: As the database for storing user data and content.
 - **ReactJS**: For building the user interface components.
 - **TypeScript**: For adding static types to JavaScript, enhancing code quality and maintainability.
-- **NextAuth**: For authentication and user session management.
+- **Better-Auth**: For authentication and user session management.
 
